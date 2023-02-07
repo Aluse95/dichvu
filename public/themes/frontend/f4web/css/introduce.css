@@ -1,0 +1,149 @@
+/* START ABOUT US */
+
+#about-us {
+  margin: 150px 0;
+}
+
+#about-us .about-us-img,
+#about-us .about-us-img img {
+  width: 100%;
+}
+
+#about-us .about-us-container {
+  padding: 0 20px;
+}
+
+#about-us .about-us-container h4 {
+  font-size: 30px;
+  text-align: center;
+  color: var(--blue-4);
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+#about-us .about-us-container p {
+  font-size: 20px;
+  text-align: justify;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* END ABOUT US */
+
+/* START REASON */
+#reason {
+  background-color: var(--blue-4);
+  padding: 100px 0;
+  padding-top: 50px;
+}
+
+#reason h4 {
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#reason .reason-number-container .number {
+  font-size: 120px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#reason .reason-number-container .text {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+/* END REASON */
+
+/* START VISION */
+#vision {
+  margin-top: 80px;
+  background-image: url("../images/worldmap.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#vision .vision-content {
+  margin-bottom: 50px;
+}
+
+#vision .vision-content h4 {
+  text-align: center;
+  color: var(--blue-4);
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#vision .vision-content p {
+  font-weight: 500;
+  text-align: center;
+  font-size: 20px;
+}
+
+#vision .vision-content-img img {
+  width: 100%;
+}
+
+/* END VISION */
+
+/* START SERVICE */
+#service-introduce {
+  margin-top: 80px;
+  background-color: #eee;
+  padding: 100px 0;
+}
+
+#service-introduce h4 {
+  text-align: center;
+  color: var(--blue-4);
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#service-introduce p {
+  font-weight: 500;
+  text-align: center;
+  font-size: 20px;
+}
+
+#service-introduce .service-img img {
+  width: 100%;
+  margin-top: 50px;
+}
+/* END SERVICE */
+
+/* START WHY CHOOSE */
+#why-choose {
+  margin-top: 80px;
+  padding: 0 0 50px;
+}
+
+#why-choose h4 {
+  text-align: center;
+  color: var(--blue-4);
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#why-choose p {
+  font-weight: 500;
+  text-align: center;
+  font-size: 20px;
+}
+
+#why-choose .why-choose-img {
+  margin-top: 50px;
+}
+#why-choose .why-choose-img img {
+  width: 100%;
+}
+/* END WHY CHOOSE */
