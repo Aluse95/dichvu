@@ -69,6 +69,10 @@
         Liên hệ
       </a>
     </div>
+    {{-- <form class="top-search-form" action="{{ route('frontend.search.index') }}" method="get">
+      <input type="search" name="keyword" placeholder="@lang('Type and hit enter...')" value="{{ $params['keyword'] ?? '' }}"
+        class="form-control" />
+    </form> --}}
     <!-- Start mobile menu -->
     <div class="m-menu">
       <div class="menu-btn">

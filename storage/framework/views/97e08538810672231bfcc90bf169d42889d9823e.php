@@ -41,12 +41,39 @@
     <div class="container">
       <h1><?php echo $brief; ?></h1>
       <div class="btn-container">
-        <a href="#form-order" class="btn-item">Đăng kí tư vấn</a>
+        <a href="/lien-he" class="btn-item">Đăng kí tư vấn</a>
         <a href="<?php echo e($url_link); ?>" class="btn-item"><?php echo e($url_link_title); ?></a>
       </div>
     </div>
     <div class="container-fluid">
-      <div class="swiper">
+      <div class="swiper banner-p">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <?php if($block_childs): ?>
+            <?php $__currentLoopData = $block_childs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php
+                $title = $item->json_params->title->{$locale} ?? $item->title;
+                $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+                $image = $item->image != '' ? $item->image : null;
+                $image_background = $item->image_background != '' ? $item->image_background : null;
+                $video = $item->json_params->video ?? null;
+                $video_background = $item->json_params->video_background ?? null;
+                $url_link = $item->url_link != '' ? $item->url_link : '';
+                $url_link_title = $item->json_params->url_link_title->{$locale} ?? $item->url_link_title;
+                $icon = $item->icon != '' ? $item->icon : '';
+                $style = isset($item->json_params->style) && $item->json_params->style == 'slider-caption-right' ? 'd-none' : '';
+                
+              ?>
+
+              <!-- Slides -->
+              <div class="swiper-slide">
+                <img src="<?php echo e($image); ?>" alt="FHM Image" />
+              </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          <?php endif; ?>
+        </div>
+      </div>
+      <div class="swiper banner-m">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <?php if($block_childs): ?>

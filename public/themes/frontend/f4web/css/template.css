@@ -1,0 +1,92 @@
+/* START CATEGORY */
+#category {
+  margin-top: 80px;
+}
+
+#category h4 {
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding: 10px 20px !important;
+  background-color: var(--blue-4);
+  color: #fff;
+  margin: 0 auto;
+  width: fit-content;
+  border-radius: 30px;
+}
+
+#category .row {
+  margin-top: 40px;
+}
+/* END CATEGORY */
+
+/* START PROJEC */
+
+#project h4 {
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 600;
+  padding: 10px 20px !important;
+  background-color: var(--blue-4);
+  color: #fff;
+  margin: 0 auto;
+  width: fit-content;
+  border-radius: 30px;
+}
+
+#project .row {
+  margin-top: 40px;
+}
+
+#project .project-pagination {
+  display: flex;
+  margin-top: 40px;
+}
+
+#project .project-pagination .button {
+  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all ease 0.2s;
+  cursor: pointer;
+  position: unset;
+  font-weight: normal;
+}
+
+#project .project-pagination-number {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 10px;
+  align-items: end;
+}
+
+#project .project-pagination-number .etc {
+  margin: 0 10px;
+  font-size: 25px;
+}
+
+#project .project-pagination .button a,
+#project .project-pagination .button i {
+  font-size: 20px;
+  margin-left: 0;
+}
+
+#project .button:hover i {
+  transform: unset;
+}
+
+#project .project-pagination .button:hover {
+  background-color: var(--blue-4);
+}
+
+#project .project-pagination .button:hover a,
+#project .project-pagination .button:hover i {
+  color: #fff;
+}
+
+/* END PROJEC */

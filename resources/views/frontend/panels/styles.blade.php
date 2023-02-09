@@ -15,8 +15,5 @@
 <link rel="stylesheet" href="{{ asset('themes/frontend/f4web/css/all.min.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('themes/frontend/f4web/css/style.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('themes/frontend/f4web/css/introduce.css') }}" type="text/css" />
+<link rel="stylesheet" href="{{ asset('themes/frontend/f4web/css/contact.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('themes/frontend/f4web/css/responsive.css') }}" type="text/css" />
-
-@isset($web_information->source_code->header)
-  {!! $web_information->source_code->header !!}
-@endisset

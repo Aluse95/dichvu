@@ -21,7 +21,41 @@
         <i class="<?php echo e($icon); ?>"></i> <?php echo $title; ?>
 
       </h4>
-      <div class="swiper">
+      <div class="swiper testimonials-p">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <?php if($block_childs): ?>
+            <?php $__currentLoopData = $block_childs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              <?php
+                $title_child = $item->json_params->title->{$locale} ?? $item->title;
+                $brief_child = $item->json_params->brief->{$locale} ?? $item->brief;
+                $content_child = $item->json_params->content->{$locale} ?? $item->content;
+                $image_child = $item->image != '' ? $item->image : null;
+                $url_link = $item->url_link != '' ? $item->url_link : '';
+                $url_link_title = $item->json_params->url_link_title->{$locale} ?? $item->url_link_title;
+                $icon = $item->icon != '' ? $item->icon : '';
+                $style = $item->json_params->style ?? '';
+              ?>
+              <div class="swiper-slide">
+                <div class="testimonials-wrapper">
+                  <div class="testimonials-title-container">
+                    <p class="testimonials-badge"><?php echo e($title_child); ?></p>
+                    <p class="testimonials-title"><?php echo e($brief_child); ?></p>
+                  </div>
+                  <p class="testimonials-content">
+                    <?php echo $content_child; ?>
+
+                  </p>
+                </div>
+              </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+          <?php endif; ?>
+          
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="swiper testimonials-m">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
@@ -58,7 +92,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-sm-12">
+        <div class="col-lg-6 col-sm-12" style="border-right: 2px dashed #ddd">
           <div class="form-container">
             <h4>Đăng kí nhận báo giá</h4>
             <div class="form-result"></div>
@@ -82,16 +116,14 @@
               </div>
               <div class="col-12 form-group">
                 <button
-                  class="button button-border button-rounded button-fill button-blue w-100 m-0 ls0 text-uppercase"
-                  type="submit">
+                  class="button"
+                  type="submit" id="submit" name="submit" value="submit">
                   <span>Gửi đăng ký</span>
                 </button>
               </div>
 
               <input type="hidden" name="is_type" value="call_request">
             </form>
-
-            
           </div>
         </div>
         <div class="col-lg-6 col-sm-12">

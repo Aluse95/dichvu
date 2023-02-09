@@ -34,7 +34,7 @@
 
                         <div class="col-lg-4 col-sm-12">
                             <div class="reason-number-container">
-                            <p class="number">{{ $brief_child }}</p>
+                            <p class="number" data-number="{{ $brief_child }}">{{ $brief_child }}+</p>
                             <p class="text">{{ $title_child }}</p>
                             </div>
                         </div>

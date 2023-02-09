@@ -34,7 +34,7 @@
 
                         <div class="col-lg-4 col-sm-12">
                             <div class="reason-number-container">
-                            <p class="number"><?php echo e($brief_child); ?></p>
+                            <p class="number" data-number="<?php echo e($brief_child); ?>"><?php echo e($brief_child); ?>+</p>
                             <p class="text"><?php echo e($title_child); ?></p>
                             </div>
                         </div>
