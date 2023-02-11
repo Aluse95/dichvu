@@ -16,5 +16,7 @@
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/f4web/css/style.css')); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/f4web/css/introduce.css')); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/f4web/css/contact.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/f4web/css/blog-category.css')); ?>" type="text/css" />
+<link rel="stylesheet" href="<?php echo e(asset('themes/frontend/f4web/css/blog-detail.css')); ?>" type="text/css" />
 <link rel="stylesheet" href="<?php echo e(asset('themes/frontend/f4web/css/responsive.css')); ?>" type="text/css" />
 <?php /**PATH C:\xampp\htdocs\f4web\resources\views/frontend/panels/styles.blade.php ENDPATH**/ ?>

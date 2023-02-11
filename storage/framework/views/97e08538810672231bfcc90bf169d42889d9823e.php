@@ -7,7 +7,6 @@
     $image = $block->image != '' ? $block->image : null;
     $url_link = $block->url_link != '' ? $block->url_link : '';
     $url_link_title = $block->json_params->url_link_title->{$locale} ?? $block->url_link_title;
-    $style = isset($block->json_params->style) && $block->json_params->style == 'slider-caption-right' ? 'd-none' : '';
     
     $image_for_screen = null;
     if ($agent->isDesktop() && $image_background != null) {
@@ -55,19 +54,11 @@
                 $title = $item->json_params->title->{$locale} ?? $item->title;
                 $brief = $item->json_params->brief->{$locale} ?? $item->brief;
                 $image = $item->image != '' ? $item->image : null;
-                $image_background = $item->image_background != '' ? $item->image_background : null;
-                $video = $item->json_params->video ?? null;
-                $video_background = $item->json_params->video_background ?? null;
-                $url_link = $item->url_link != '' ? $item->url_link : '';
-                $url_link_title = $item->json_params->url_link_title->{$locale} ?? $item->url_link_title;
-                $icon = $item->icon != '' ? $item->icon : '';
-                $style = isset($item->json_params->style) && $item->json_params->style == 'slider-caption-right' ? 'd-none' : '';
-                
               ?>
 
               <!-- Slides -->
               <div class="swiper-slide">
-                <img src="<?php echo e($image); ?>" alt="FHM Image" />
+                <img src="<?php echo e($image); ?>" alt="<?php echo e($title); ?>" />
               </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           <?php endif; ?>
@@ -82,19 +73,11 @@
                 $title = $item->json_params->title->{$locale} ?? $item->title;
                 $brief = $item->json_params->brief->{$locale} ?? $item->brief;
                 $image = $item->image != '' ? $item->image : null;
-                $image_background = $item->image_background != '' ? $item->image_background : null;
-                $video = $item->json_params->video ?? null;
-                $video_background = $item->json_params->video_background ?? null;
-                $url_link = $item->url_link != '' ? $item->url_link : '';
-                $url_link_title = $item->json_params->url_link_title->{$locale} ?? $item->url_link_title;
-                $icon = $item->icon != '' ? $item->icon : '';
-                $style = isset($item->json_params->style) && $item->json_params->style == 'slider-caption-right' ? 'd-none' : '';
-                
               ?>
 
               <!-- Slides -->
               <div class="swiper-slide">
-                <img src="<?php echo e($image); ?>" alt="FHM Image" />
+                <img src="<?php echo e($image); ?>" alt="<?php echo e($title); ?>" />
               </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           <?php endif; ?>

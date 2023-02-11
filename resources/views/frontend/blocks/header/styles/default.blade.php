@@ -9,58 +9,61 @@
       />
     </a>
     <div class="menu-container">
-      @isset($menu)
-        @php
-          $main_menu = $menu->first(function ($item, $key) {
-              return $item->menu_type == 'header' && ($item->parent_id == null || $item->parent_id == 0);
-          });
-          if ($main_menu) {
-              $content = '';
-              foreach ($menu as $item) {
-                  $url = $title = '';
-                  if ($item->parent_id == $main_menu->id) {
-                      $title = isset($item->json_params->title->{$locale}) && $item->json_params->title->{$locale} != '' ? $item->json_params->title->{$locale} : $item->name;
-                      $url = $item->url_link;
-                      $active = $url == url()->full() ? 'current' : '';
-                      $icon = ($item->sub > 0) ? 'fa-solid fa-chevron-down' : '';
-          
-                      $content .= '<a href= "' . $url . '" class="menu-link '. $active .'">' . $title . '<i class=" '. $icon . '"></i>';
-          
-                      if ($item->sub > 0) {
-                          $content .= '<ul class="sub-menu-container">';
-                          foreach ($menu as $item_sub) {
+      <ul class="list-unstyled d-flex m-0">
+        @isset($menu)
+          @php
+            $main_menu = $menu->first(function ($item, $key) {
+                return $item->menu_type == 'header' && ($item->parent_id == null || $item->parent_id == 0);
+            });
+            if ($main_menu) {
+                $content = '';
+                foreach ($menu as $item) {
+                    $url = $title = '';
+                    if ($item->parent_id == $main_menu->id) {
+                        $title = isset($item->json_params->title->{$locale}) && $item->json_params->title->{$locale} != '' ? $item->json_params->title->{$locale} : $item->name;
+                        $url = $item->url_link;
+                        $active = $url == url()->full() ? 'current' : '';
+                        $icon = ($item->sub > 0) ? 'fa-solid fa-chevron-down' : '';
+                        $sub = ($item->sub > 0) ? 'sub-menu' : '';
+
+                        $content .= '<li class="' . $sub . '"><a href= "' . $url . '" class="menu-link '. $active .'">' . $title . '<i class=" '. $icon . '"></i></a>';
+            
+                          if ($item->sub > 0) {
+                            $content .= '<ul class="sub-menu-container">';
+                            foreach ($menu as $item_sub) {
                               $url = $title = '';
                               if ($item_sub->parent_id == $item->id) {
-                                  $title = isset($item_sub->json_params->title->{$locale}) && $item_sub->json_params->title->{$locale} != '' ? $item_sub->json_params->title->{$locale} : $item_sub->name;
-                                  $url = $item_sub->url_link;
-          
-                                  $content .= '<li class="menu-item"><a class="menu-link" href="' . $url . '"><div>' . $title . '</div></a>';
-          
-                                  if ($item_sub->sub > 0) {
-                                      $content .= '<ul class="sub-menu-container">';
-                                      foreach ($menu as $item_sub_2) {
-                                          $url = $title = '';
-                                          if ($item_sub_2->parent_id == $item_sub->id) {
-                                              $title = isset($item_sub_2->json_params->title->{$locale}) && $item_sub_2->json_params->title->{$locale} != '' ? $item_sub_2->json_params->title->{$locale} : $item_sub_2->name;
-                                              $url = $item_sub_2->url_link;
-          
-                                              $content .= '<li class="menu-item"><a class="menu-link" href="' . $url . '"><div>' . $title . '</div></a></li>';
-                                          }
-                                      }
-                                      $content .= '</ul>';
+                                $title = isset($item_sub->json_params->title->{$locale}) && $item_sub->json_params->title->{$locale} != '' ? $item_sub->json_params->title->{$locale} : $item_sub->name;
+                                $url = $item_sub->url_link;
+        
+                                $content .= '<li><a href="' . $url . '"><div class="p-2">' . $title . '</div></a>';
+        
+                                if ($item_sub->sub > 0) {
+                                  $content .= '<ul class="sub-menu-container">';
+                                  foreach ($menu as $item_sub_2) {
+                                    $url = $title = '';
+                                    if ($item_sub_2->parent_id == $item_sub->id) {
+                                      $title = isset($item_sub_2->json_params->title->{$locale}) && $item_sub_2->json_params->title->{$locale} != '' ? $item_sub_2->json_params->title->{$locale} : $item_sub_2->name;
+                                      $url = $item_sub_2->url_link;
+  
+                                      $content .= '<li><a href="' . $url . '"><div class="p-2">' . $title . '</div></a></li>';
+                                    }
                                   }
-                                  $content .= '</li>';
+                                  $content .= '</ul>';
+                                }
+                                $content .= '</li>';
                               }
+                            }
+                            $content .= '</ul>';
                           }
-                          $content .= '</ul>';
-                      }
-                      $content .= '</a>';
-                  }
-              }
-              echo $content;
-          }
-        @endphp
-      @endisset
+                        $content .= '</li>';
+                    }
+                }
+                echo $content;
+            }
+          @endphp
+        @endisset
+      </ul>
     </div>
     <div class="search-container">
       <i class="fa-solid fa-magnifying-glass"></i>

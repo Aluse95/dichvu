@@ -82,7 +82,7 @@
               {{ $posts->withQueryString()->links('frontend.pagination.default') }}
             </div>
           </div>
-
+          
           @include('frontend.components.sidebar.post')
 
         </div>
