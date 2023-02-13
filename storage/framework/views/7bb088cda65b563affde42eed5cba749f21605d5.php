@@ -59,7 +59,6 @@
           <div class="col-lg-4 col-md-6 col-sm-12 project-item">
             <div class="project-item-img">
               <img src="<?php echo e($image); ?>" alt="<?php echo e($title); ?>" />
-              <a href="#" class="demo-btn">Xem Demo</a>
               <a href="<?php echo e($alias); ?>" class="detail-btn">Xem chi tiết</a>
             </div>
             <a href="<?php echo e($alias); ?>" class="project-item-title"><?php echo e($title); ?></a>
@@ -90,7 +89,6 @@
           <div class="col-lg-4 col-md-6 col-sm-12 project-item">
             <div class="project-item-img">
               <img src="<?php echo e($image); ?>" alt="<?php echo e($title); ?>" />
-              <a href="#" class="demo-btn">Xem Demo</a>
               <a href="<?php echo e($alias); ?>" class="detail-btn">Xem chi tiết</a>
             </div>
             <a href="<?php echo e($alias); ?>" class="project-item-title"><?php echo e($title); ?></a>

@@ -11,105 +11,156 @@
   $seo_keyword = $taxonomy->json_params->seo_keyword ?? null;
   $seo_description = $taxonomy->json_params->seo_description ?? null;
   $seo_image = $image ?? null;
-  
+  $datas = $taxonomys->chunk(6);
 @endphp
 
 @section('content')
-  {{-- Print all content by [module - route - page] without blocks content at here --}}
-  <section id="page-title" class="page-title-parallax page-title-center page-title-dark include-header"
-    style="background-image: linear-gradient(to top, rgba(254,150,3,0.5), #39384D), url('{{ $image_background }}'); background-size: cover; padding: 120px 0;"
-    data-bottom-top="background-position:0px 300px;" data-top-bottom="background-position:0px -300px;">
-    <div id="particles-line"></div>
+  <style>
+    #banner {
+      background-image: url("{{ $image_background }}");
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 250px 0 0;
+    }
+  </style>
 
-    <div class="container clearfix mt-4">
-      {{-- <div class="badge rounded-pill border border-light text-light">{{ $page_title }}</div> --}}
-      {{-- <h1>{{ $page_title }}</h1> --}}
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('frontend.home') }}">@lang('Home')</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('frontend.cms.product') }}">{{ $page->name ?? '' }}</a></li>
-      </ol>
+  <div id="banner">
+    <div class="container">
       <h1>{{ $page_title }}</h1>
     </div>
-  </section>
+  </div>
 
-  <section id="content">
-
-    <div class="content-wrap">
-      <div class="container mb-3">
-
-        <div class="row mb-5">
-          <div class="col-12">
-
-            @isset($taxonomys)
-              @php
-                $color = ['aqua', 'blue', 'amber', 'red'];
-              @endphp
+  <div id="category">
+    <div class="container">
+      <h4>
+        <span> Giao diện website theo lĩnh vực </span>
+      </h4>
+      <div class="p-category row">
+        @isset($taxonomys)
               @foreach ($taxonomys as $item)
                 @php
                   $title = $item->json_params->title->{$locale} ?? $item->title;
                   $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+                  $image = $item->json_params->image ?? '';
                   // Viet ham xu ly lay slug
                   $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $title, $item->id);
-                  
                 @endphp
-                <a href="{{ $alias_category }}"
-                  class="button button-border button-rounded button-fill button-{{ $color[$loop->index % 4] }} ms-0">
-                  <span>{{ $title }}</span>
+
+                <a href="{{ $alias_category }}" class="col-lg-2 col-md-3 col-sm-4 category-item">
+                  <div class="category-item-img">
+                    <img class="img-fluid w-100 h-100" src="{{ $image }}" alt="{{ $title }}">
+                  </div>
+                  <p>{{ $title }}</p>
                 </a>
               @endforeach
             @endisset
-          </div>
-        </div>
-
-        <div class="row">
-          @foreach ($posts as $item)
-            @php
-              $title = $item->json_params->title->{$locale} ?? $item->title;
-              $brief = $item->json_params->brief->{$locale} ?? $item->brief;
-              $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
-              $date = date('H:i d/m/Y', strtotime($item->created_at));
-              // Viet ham xu ly lay slug
-              $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $item->taxonomy_title, $item->taxonomy_id);
-              // $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $title, $item->id, 'detail', $item->taxonomy_title);
-              // $alias = route(App\Consts::ROUTE_POST['product'], ['alias_category' => $item->alias ?? Str::slug($item->title)]);
-              $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
-            @endphp
-            <article class="portfolio-item col-12 col-sm-6 col-md-3 pf-media pf-icons text-center mb-5">
-              <div class="grid-inner" style="box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%); border-radius: 10px">
-                <div class="portfolio-image" style="max-height: 350px; overflow: hidden; ">
-                  <img src="{{ $image }}" alt="{{ $title }}" style="height: 100%">
-                  <div class="bg-overlay">
-                    <div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-speed="500">
-                      <a href="{{ $alias }}" class="overlay-trigger-icon bg-light text-dark"
-                        data-hover-animate="fadeIn" data-hover-speed="500"><i class="icon-line-ellipsis"></i></a>
+      </div>
+      <div class="m-category swiper">
+        <div class="swiper-wrapper">
+          @foreach ($datas as $data)
+            <div class="swiper-slide">
+              <div class="container">
+                <div class="row">
+                  @foreach ($data as $item)
+                    @php
+                      $title = $item->json_params->title->{$locale} ?? $item->title;
+                      $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+                      $image = $item->json_params->image ?? '';
+                      $date = date('H:i d/m/Y', strtotime($item->created_at));
+                      // Viet ham xu ly lay slug
+                      // $alias = route(App\Consts::ROUTE_POST['product'], ['alias_category' => $item->alias ?? Str::slug($item->title)]);
+                      $alias = $item->alias ?? '';
+                      $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $title, $item->id);
+                    @endphp
+                    
+                    <div class="col-4">
+                      <a href="{{ $alias_category }}" class="category-item">
+                        <div class="category-item-img">
+                          <img class="img-fluid w-100 h-100" src="{{ $image }}" alt="{{ $title }}">
+                        </div>
+                        <p>{{ $title }}</p>
+                      </a>
                     </div>
-                    <div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-speed="500"></div>
-                  </div>
-                </div>
-                <div class="portfolio-desc">
-                  <h3><a href="{{ $alias }}">{{ $title }}</a></h3>
-                  <span>{{ $brief }}</span>
+                  @endforeach
                 </div>
               </div>
-            </article>
-          @endforeach
-
-        </div>
-
-        {{ $posts->withQueryString()->links('frontend.pagination.default') }}
-
-        @if ($page_content != '')
-          <div class="row mt-3">
-            <div class="col-md-12">
-              {!! $page_content ?? '' !!}
             </div>
-          </div>
-        @endif
+          @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
+  </div>
 
+  <div id="project">
+    <div class="container">
+      <h4>
+        <span>{{ $page_title }}</span>
+      </h4>
+      <div class="p-project row">
+        @foreach ($posts as $item)
+          @php
+            $title = $item->json_params->title->{$locale} ?? $item->title;
+            $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+            $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
+            $date = date('H:i d/m/Y', strtotime($item->created_at));
+            // Viet ham xu ly lay slug
+            $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $item->taxonomy_title, $item->taxonomy_id);
+            // $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $title, $item->id, 'detail', $item->taxonomy_title);
+            // $alias = route(App\Consts::ROUTE_POST['product'], ['alias_category' => $item->alias ?? Str::slug($item->title)]);
+            $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
+          @endphp
+          <div class="col-lg-4 col-md-6 col-sm-12 project-item">
+            <div class="project-item-img">
+              <img src="{{ $image }}" alt="{{ $title }}" />
+              <a href="{{ $alias }}" class="detail-btn">Xem chi tiết</a>
+            </div>
+            <a href="{{ $alias }}" class="project-item-title">{{ $title }}</a>
+          </div>
+        @endforeach
+      </div>
 
+      <div class="p-project mt-3">
+        <div class="d-flex justify-content-center w-100">
+          {{ $posts->withQueryString()->links('frontend.pagination.default') }}
+        </div>
+      </div>
 
-  </section>
+      <div class="m-project row">
+        @foreach ($posts as $item)
+          @php
+            $title = $item->json_params->title->{$locale} ?? $item->title;
+            $brief = $item->json_params->brief->{$locale} ?? $item->brief;
+            $image = $item->image_thumb != '' ? $item->image_thumb : ($item->image != '' ? $item->image : null);
+            $date = date('H:i d/m/Y', strtotime($item->created_at));
+            // Viet ham xu ly lay slug
+            $alias_category = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $item->alias ?? $item->taxonomy_title, $item->taxonomy_id);
+            // $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['product'], $title, $item->id, 'detail', $item->taxonomy_title);
+            // $alias = route(App\Consts::ROUTE_POST['product'], ['alias_category' => $item->alias ?? Str::slug($item->title)]);
+            $alias = App\Helpers::generateRoute(App\Consts::TAXONOMY['post'], $item->alias ?? $title, $item->id, 'detail', $item->taxonomy_title);
+          @endphp
+          <div class="col-lg-4 col-md-6 col-sm-12 project-item">
+            <div class="project-item-img">
+              <img src="{{ $image }}" alt="{{ $title }}" />
+              <a href="{{ $alias }}" class="detail-btn">Xem chi tiết</a>
+            </div>
+            <a href="{{ $alias }}" class="project-item-title">{{ $title }}</a>
+          </div>
+        @endforeach
+
+      </div>
+      <div class="m-project mt-3">
+        {{ $posts->withQueryString()->links('frontend.pagination.default') }}
+      </div>
+    </div>
+  </div>
+
   {{-- End content --}}
 @endsection
+
+

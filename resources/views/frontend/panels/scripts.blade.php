@@ -27,7 +27,7 @@
           //  $(".form-process").hide();
           // alert(response.message);
           // location.reload();
-          window.location.href = "https://fhmvietnam.vn/loi-cam-on";
+          window.location.href = "https://dichvuthietkewebsite.vn/loi-cam-on";
         },
         error: function(response) {
           //  $(".form-process").hide();
@@ -99,7 +99,7 @@
           form[0].reset();
           // alert(response.message);
           // location.reload();
-          window.location.href = "https://fhmvietnam.vn/loi-cam-on";
+          window.location.href = "https://dichvuthietkewebsite.vn/loi-cam-on";
         },
         error: function(response) {
           // Get errors

@@ -23,7 +23,7 @@
   display: flex;
 }
 
-#template-detail .template-detail-button a {
+#template-detail .template-detail-button span {
   padding: 10px 20px;
   border-radius: 30px;
   color: #fff;
@@ -32,9 +32,10 @@
   margin-right: 10px;
   font-size: 20px;
   transition: all ease 0.2s;
+  cursor: pointer;
 }
 
-#template-detail .template-detail-button a:hover {
+#template-detail .template-detail-button span:hover {
   color: var(--blue-4);
   background-color: #fff;
   border-color: var(--blue-4);
@@ -172,4 +173,10 @@
 
 #template-detail .button:hover i {
   transform: translateX(5px);
+}
+#myModalLabel {
+  font-size: 18px;
+}
+.modal-header {
+  background-color: var(--blue-4);
 }

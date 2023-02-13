@@ -35,11 +35,12 @@
                               if ($item_sub->parent_id == $item->id) {
                                 $title = isset($item_sub->json_params->title->{$locale}) && $item_sub->json_params->title->{$locale} != '' ? $item_sub->json_params->title->{$locale} : $item_sub->name;
                                 $url = $item_sub->url_link;
+                                $sub_child = ($item_sub->sub > 0) ? 'sub-child' : '';
+                                $icon = ($item_sub->sub > 0) ? 'fa-solid fa-chevron-down' : '';
         
-                                $content .= '<li><a href="' . $url . '"><div class="p-2">' . $title . '</div></a>';
-        
+                                $content .= '<li class="' . $sub_child . '"><a class="d-flex justify-content-between" href="' . $url . '"><div class="p-2">' . $title . '</div><i class=" '. $icon . ' "></i></a>';
                                 if ($item_sub->sub > 0) {
-                                  $content .= '<ul class="sub-menu-container">';
+                                  $content .= '<ul class="sub-menu-child">';
                                   foreach ($menu as $item_sub_2) {
                                     $url = $title = '';
                                     if ($item_sub_2->parent_id == $item_sub->id) {

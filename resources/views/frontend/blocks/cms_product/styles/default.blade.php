@@ -58,7 +58,6 @@
           <div class="col-lg-4 col-md-6 col-sm-12 project-item">
             <div class="project-item-img">
               <img src="{{ $image }}" alt="{{ $title }}" />
-              <a href="#" class="demo-btn">Xem Demo</a>
               <a href="{{ $alias }}" class="detail-btn">Xem chi tiết</a>
             </div>
             <a href="{{ $alias }}" class="project-item-title">{{ $title }}</a>
@@ -89,7 +88,6 @@
           <div class="col-lg-4 col-md-6 col-sm-12 project-item">
             <div class="project-item-img">
               <img src="{{ $image }}" alt="{{ $title }}" />
-              <a href="#" class="demo-btn">Xem Demo</a>
               <a href="{{ $alias }}" class="detail-btn">Xem chi tiết</a>
             </div>
             <a href="{{ $alias }}" class="project-item-title">{{ $title }}</a>
